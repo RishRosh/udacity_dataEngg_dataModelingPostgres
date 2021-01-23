@@ -36,7 +36,7 @@ song_table_create = (""" CREATE TABLE IF NOT EXISTS
     songs (
         song_id varchar PRIMARY KEY,
         title varchar,
-        artist_id varchar,
+        artist_id varchar REFERENCES artists (artist_id),
         year int,
         duration numeric(10,5)
         );
@@ -124,16 +124,16 @@ song_select = ("""
 
 create_table_queries = [
     user_table_create,
-    song_table_create,
     artist_table_create,
+    song_table_create,
     time_table_create,
     songplay_table_create
 ]
 
 drop_table_queries = [
     songplay_table_drop,
-    user_table_drop,
     song_table_drop,
+    user_table_drop,
     artist_table_drop,
     time_table_drop
 ]
